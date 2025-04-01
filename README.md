@@ -8,7 +8,7 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 * **TUTOR**: MAXIMILIANO ALEXANDER TAPIA CASTILLO
 
 ## Wiki
-* Aqui puede acceder a la wiki[Enlace](https://gitlab.com/Diego_Villanueva/grupo14-2025-proyinf/-/wikis/home)
+* Aqui puede acceder a la wiki [Enlace](https://gitlab.com/Diego_Villanueva/grupo14-2025-proyinf/-/wikis/home)
 
 ## Videos
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6322574)
