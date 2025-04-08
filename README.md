@@ -5,7 +5,7 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 * Integrante 2: Ignacio Figueroa - 202330536-7
 * Integrante 3: Diego Villanueva - 202330558-8
 * Integrante 4: Diego Acevedo - 202330504-9
-
+* **Profesor**: Ricardo Salas Letelier
 * **TUTOR**: MAXIMILIANO ALEXANDER TAPIA CASTILLO
 
 ## Wiki
