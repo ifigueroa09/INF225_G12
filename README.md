@@ -23,9 +23,9 @@ Base de datos: MySQL (opcional)
 
 Web que permite a alumnos practicar ensayos PAES, respondiendo preguntas y profesores viendo sus resultados automaticamente
 
-Descargar:
-(https://nodejs.org/) version LTS
-Descargar el proyecto y ubicarlo en tu computador
+Descargar: (https://nodejs.org/) version LTS
+
+Descargar el proyecto y ubicarlo en tu computador.
 
 **Pasos**
 
@@ -37,19 +37,27 @@ Luego entrar al frontend: cd frontend
 
 npm install
 
-en caso de no funcionar usar (Set-ExecutionPolicy -Scope CurrentUser -ExeptionPolicy RemoteSigned) en la terminal
+En caso de no funcionar usar (Set-ExecutionPolicy -Scope CurrentUser -ExeptionPolicy RemoteSigned) en la terminal.
 
-Abrir phpMyAdmin U otros y cargar base de datos con el archivo llamado [estructura_paes.sql]
+Crear la base de datos con el archivo [estructura_paes.sql] y poblarla con el archivo [datos_prueba_paes.sql]
 
-verificar que en le archivo server.js este correcta la conexion:
+Abrir con phpMyAdmin U otros programas para ver el codigo de la pagina web como tal y cargar base de datos con el archivo llamado [estructura_paes.sql]
+
+Verificar que en le archivo server.js este correcta la conexion:
 
 const conn = mysql.createConnection({
+
   host: 'localhost',
+
   user: 'root',
+
   password: '',
+
   database: 'paes'
+
 });
-(Se debe tener creada la BD para que el backend funcione correctamente)
+
+**Se debe tener creada la BD para que el backend funcione correctamente**
 Para iniciar se debe estar en la carpeta raiz y en la terminal se debe escribir:
 
 Iniciar parte backend
