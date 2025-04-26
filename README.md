@@ -30,10 +30,13 @@ Descargar el proyecto y ubicarlo en tu computador
 **Pasos**
 
 Abrir terminal en la carpeta raíz del proyecto y ejecutar:
+
 npm install express cors mysql2
-Luego entrar al frontend:
-cd frontend
+
+Luego entrar al frontend: cd frontend
+
 npm install
+
 en caso de no funcionar usar (Set-ExecutionPolicy -Scope CurrentUser -ExeptionPolicy RemoteSigned) en la terminal
 
 Abrir phpMyAdmin U otros y cargar base de datos con el archivo llamado [estructura_paes.sql]
