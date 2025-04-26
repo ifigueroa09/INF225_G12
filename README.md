@@ -18,7 +18,9 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 **Componentes utilizadas y necesarias:**
 
 Frontend: React + Vite
+
 Backend: Node.js + Express
+
 Base de datos: MySQL (opcional)
 
 Web que permite a alumnos practicar ensayos PAES, respondiendo preguntas y profesores viendo sus resultados automaticamente
@@ -62,10 +64,13 @@ const conn = mysql.createConnection({
 Para iniciar se debe estar en la carpeta raiz y en la terminal se debe escribir:
 
 Iniciar parte backend
+
 node server.js
 
 [Respuesta esperada]:Servidor corriendo en puerto 3001
 
 Iniciar parte frontend
+
 cd frontend
+
 npm run dev
