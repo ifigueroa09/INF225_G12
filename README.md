@@ -57,11 +57,13 @@ const conn = mysql.createConnection({
 
 });
 
-**Se debe tener creada la BD para que el backend funcione correctamente**
+**Se debe tener creada la BD para que el backend funcione correctamente.**
+
 Para iniciar se debe estar en la carpeta raiz y en la terminal se debe escribir:
 
 Iniciar parte backend
 node server.js
+
 [Respuesta esperada]:Servidor corriendo en puerto 3001
 
 Iniciar parte frontend
