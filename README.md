@@ -13,3 +13,43 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 
 ## Videos
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6322574)
+
+## Pasos para levantar el proyecto y elementos necesarios
+Componentes utilizadas y necesarias:
+Frontend: React + Vite
+Backend: Node.js + Express
+Base de datos: MySQL (opcional)
+
+Web que permite a alumnos practicar ensayos PAES, respondiendo preguntas y profesores viendo sus resultados automaticamente
+
+Descargar:
+(https://nodejs.org/) version LTS
+Descargar el proyecto y ubicarlo en tu computador
+
+Abrir terminal en la carpeta raíz del proyecto y ejecutar:
+npm install express cors mysql2
+Luego entrar al frontend:
+cd frontend
+npm install
+en caso de no funcionar usar (Set-ExecutionPolicy -Scope CurrentUser -ExeptionPolicy RemoteSigned) en la terminal
+
+Abrir phpMyAdmin U otros y cargar base de datos con el archivo llamado [estructura_paes.sql]
+
+verificar que en le archivo server.js este correcta la conexion:
+
+const conn = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'paes'
+});
+(Se debe tener creada la BD para que el backend funcione correctamente)
+Para iniciar se debe estar en la carpeta raiz y en la terminal se debe escribir:
+
+Iniciar parte backend
+node server.js
+[Respuesta esperada]:Servidor corriendo en puerto 3001
+
+Iniciar parte frontend
+cd frontend
+npm run dev
