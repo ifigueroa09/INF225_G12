@@ -16,6 +16,7 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 
 ## Pasos para levantar el proyecto y elementos necesarios
 Componentes utilizadas y necesarias:
+
 Frontend: React + Vite
 Backend: Node.js + Express
 Base de datos: MySQL (opcional)
