@@ -15,7 +15,7 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6322574)
 
 ## Pasos para levantar el proyecto y elementos necesarios
-Componentes utilizadas y necesarias:
+**Componentes utilizadas y necesarias:**
 
 Frontend: React + Vite
 Backend: Node.js + Express
@@ -26,6 +26,8 @@ Web que permite a alumnos practicar ensayos PAES, respondiendo preguntas y profe
 Descargar:
 (https://nodejs.org/) version LTS
 Descargar el proyecto y ubicarlo en tu computador
+
+**Pasos**
 
 Abrir terminal en la carpeta raíz del proyecto y ejecutar:
 npm install express cors mysql2
