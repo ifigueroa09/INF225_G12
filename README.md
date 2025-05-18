@@ -13,6 +13,7 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 
 ## Videos
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6322574)
+* [Video Avance Prototipo](https://youtu.be/6re0CEddsyE)
 
 ## Pasos para levantar el proyecto y elementos necesarios
 **Componentes utilizadas y necesarias:**
@@ -39,11 +40,9 @@ Luego entrar al frontend: cd frontend
 
 npm install
 
-En caso de no funcionar usar (Set-ExecutionPolicy -Scope CurrentUser -ExeptionPolicy RemoteSigned) en la terminal.
+En caso de no funcionar usar (Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned) en la terminal.
 
-Crear la base de datos con el archivo [estructura_paes.sql] y poblarla con el archivo [datos_prueba_paes.sql]
-
-Abrir con phpMyAdmin U otros programas para ver el codigo de la pagina web como tal y cargar base de datos con el archivo llamado [estructura_paes.sql]
+Crear la base de datos con el archivo [estructura.sql] y poblarla con el archivo [data.sql]
 
 Verificar que en le archivo server.js este correcta la conexion:
 
@@ -62,14 +61,15 @@ const conn = mysql.createConnection({
 **Se debe tener creada la BD para que el backend funcione correctamente.**
 
 Para iniciar se debe estar en la carpeta raiz y en la terminal se debe escribir:
+Iniciar Parte Backend
 
-Iniciar parte backend
+cd backend
 
 node server.js
 
 [Respuesta esperada]:Servidor corriendo en puerto 3001
 
-Iniciar parte frontend
+Iniciar Parte Frontend
 
 cd frontend
 
