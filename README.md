@@ -14,6 +14,7 @@ Este es el repositorio del grupo 14, cuyos integrantes son:
 ## Videos
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6322574)
 * [Video Avance Prototipo](https://youtu.be/t5p1rI0LDxk)
+* [Video Resultado final del prototipo](https://youtu.be/8EBn7VnkHqU)
 
 ## Pasos para levantar el proyecto y elementos necesarios
 **Componentes utilizadas y necesarias:**
