@@ -1,12 +1,12 @@
-# Proyecto-INF236
+# Proyecto-INF225 (proyecto base INF236 2025-1)
 Este es el repositorio del grupo 14, cuyos integrantes son:
 
 * Integrante 1: Gabriela Trigo - 202330561-8
 * Integrante 2: Ignacio Figueroa - 202330536-7
-* Integrante 3: Diego Villanueva - 202330558-8
+* Integrante 3: Benjamin Matus - 202330546-4
 * Integrante 4: Diego Acevedo - 202330504-9
 * **Profesor**: Ricardo Salas Letelier
-* **TUTOR**: MAXIMILIANO ALEXANDER TAPIA CASTILLO
+* **TUTOR**: Eduardo Mauricio Pino Huentelaf
 
 ## Wiki
 * Aqui puede acceder a la wiki [Enlace](https://gitlab.com/Diego_Villanueva/grupo14-2025-proyinf/-/wikis/home)
