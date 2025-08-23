@@ -12,7 +12,7 @@ Los integrantes son:
 * **TUTOR**: Eduardo Mauricio Pino Huentelaf
 
 ## Wiki
-* Aqui puede acceder a la wiki [Enlace]([https://gitlab.com/Diego_Villanueva/grupo14-2025-proyinf/-/wikis/home](https://github.com/ifigueroa09/INF225_G12/wiki))
+* Aqui puede acceder a la wiki [Enlace]((https://github.com/ifigueroa09/INF225_G12/wiki)]
 
 ## Videos
 * [Video presentación cliente](https://aula.usm.cl/mod/resource/view.php?id=6322574)
