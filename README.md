@@ -1,5 +1,8 @@
 # Proyecto-INF225 (proyecto base INF236 2025-1)
-Este es el repositorio del grupo 14, cuyos integrantes son:
+Este es el repositorio del grupo 12, proyecto que tiene como base lo realizado en el ramo INF236 ("Analisis y diseño de software") del semestre 2025-1.
+Este proyecto se basa en realizar una pagina de ensayos de la Prueba de Acceso a la Educación Superior (PAES) a una red de colegios.
+
+Los integrantes son:
 
 * Integrante 1: Gabriela Trigo - 202330561-8
 * Integrante 2: Ignacio Figueroa - 202330536-7
