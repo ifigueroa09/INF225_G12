@@ -19,62 +19,53 @@ Los integrantes son:
 * [Video Avance Prototipo](https://youtu.be/t5p1rI0LDxk)
 * [Video Resultado final del prototipo](https://youtu.be/kGIDwCZRdNo)
 
-## Pasos para levantar el proyecto y elementos necesarios
-**Componentes utilizadas y necesarias:**
+## Cómo ejecutar el proyecto
 
-Frontend: React + Vite
+### **Ejecución con Docker**
 
-Backend: Node.js + Express
+**Requisitos:**
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado
 
-Base de datos: MySQL (opcional)
+**Pasos:**
 
-Web que permite a alumnos practicar ensayos PAES, respondiendo preguntas y profesores viendo sus resultados automaticamente
+1. **Clonar el repositorio:**
+```bash
+git clone https://github.com/ifigueroa09/INF225_G12.git
+cd INF225_G12
+```
 
-Descargar: (https://nodejs.org/) version LTS
+2. **Levantar todo el sistema:**
+```bash
+docker-compose up -d
+```
 
-Descargar el proyecto y ubicarlo en tu computador.
+3. **Acceder a la aplicación:**
+- **Frontend:** http://localhost
+- **Backend API:** http://localhost:3000
+- **Base de datos:** Puerto 3306
 
-**Pasos**
+**Para detener el sistema:**
+```bash
+docker-compose down
+```
 
-Abrir terminal en la carpeta raíz del proyecto y ejecutar:
+### **Credenciales de prueba:**
 
-npm install express cors mysql2
+**Profesores:**
+- RUT: `10000000-1` (Matemáticas M1)
+- RUT: `20000000-2` (Matemáticas M2)
+- RUT: `30000000-3` (Competencia Lectora)
+- RUT: `40000000-4` (Historia)
+- RUT: `50000000-5` (Ciencias)
 
-Luego entrar al frontend: cd frontend
+**Alumnos:**
+- RUT: `11111111-1`, Nombre: `Alumno A`
+- RUT: `22222222-2`, Nombre: `Alumno B`
+- RUT: `33333333-3`, Nombre: `Alumno C`
 
-npm install
-
-En caso de no funcionar usar (Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned) en la terminal.
-
-Crear la base de datos con el archivo [estructura.sql] y poblarla con el archivo [data.sql]
-
-Verificar que en le archivo server.js este correcta la conexion:
-
-const conn = mysql.createConnection({
-
-  host: 'localhost',
-
-  user: 'root',
-
-  password: '',
-
-  database: 'paes'
-
-});
-
-**Se debe tener creada la BD para que el backend funcione correctamente.**
-
-Para iniciar se debe estar en la carpeta raiz y en la terminal se debe escribir:
-Iniciar Parte Backend
-
-cd backend
-
-node server.js
-
-[Respuesta esperada]:Servidor corriendo en puerto 3001
-
-Iniciar Parte Frontend
-
-cd frontend
-
-npm run dev
+###  **Funcionalidades principales:**
+- Sistema de login para profesores y alumnos
+- Creación y gestión de preguntas por materia
+- Ensayos PAES completos
+- **Preguntas libres para autoevaluación**
+- Resultados automáticos y retroalimentación
