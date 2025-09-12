@@ -4,7 +4,8 @@ import Preguntas from './Preguntas';
 import Resultados from './Resultados';
 import VistaProfesor from './VistaProfesor';
 import CrearEnsayo from './CrearEnsayo';
-import CrearPregunta from './CrearPregunta';
+import CrearPregunta from './Crearpregunta';
+import PreguntasLibres from './PreguntasLibres';
 
 function limpiarRut(rutConGuion) {
   return rutConGuion.replace(/\./g, '').toUpperCase();
@@ -19,6 +20,7 @@ export default function App() {
   const [resultado, setResultado] = useState(null);
   const [crearModo, setCrearModo] = useState(false);
   const [crearPreguntaModo, setCrearPreguntaModo] = useState(false);
+  const [preguntasLibresModo, setPreguntasLibresModo] = useState(false);
 
   const [materiaUsuario, setMateriaUsuario] = useState(null);
   const [materiasDisponibles, setMateriasDisponibles] = useState([]);
@@ -155,7 +157,7 @@ export default function App() {
             </div>
           ) : (
             <>
-              {rol === 'profesor' && !crearModo && !crearPreguntaModo && (
+              {rol === 'profesor' && !crearModo && !crearPreguntaModo && !preguntasLibresModo && (
                 <>
                   <div className="bg-white p-4 my-4 rounded shadow">
                     <h3 className="text-lg">Bienvenido, {nombre}</h3>
@@ -184,6 +186,12 @@ export default function App() {
                     >
                       Crear nueva pregunta
                     </button>
+                    <button
+                      onClick={() => setPreguntasLibresModo(true)}
+                      className="flex-1 py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+                    >
+                      Gestionar preguntas libres
+                    </button>
                   </div>
                 </>
               )}
@@ -206,13 +214,36 @@ export default function App() {
                 />
               )}
 
+              {rol === 'profesor' && preguntasLibresModo && (
+                <PreguntasLibres
+                  usuario={{ rut: rut.replace(/\./g, ''), nombre, rol, materia_id: materiaUsuario.id }}
+                  onVolver={() => setPreguntasLibresModo(false)}
+                />
+              )}
+
               {rol === 'alumno' && (
                 <div className="mt-6">
-                  {estado === 'inicio' && (
-                    <Ensayos
-                      materiaId={materiaUsuario.id}
-                      comenzar={e => { setEnsayoActual(e); setEstado('preguntas'); }}
-                      onVolver={() => setMateriaUsuario(null)}
+                  {estado === 'inicio' && !preguntasLibresModo && (
+                    <>
+                      <Ensayos
+                        materiaId={materiaUsuario.id}
+                        comenzar={e => { setEnsayoActual(e); setEstado('preguntas'); }}
+                        onVolver={() => setMateriaUsuario(null)}
+                      />
+                      <div className="mt-4">
+                        <button
+                          onClick={() => setPreguntasLibresModo(true)}
+                          className="w-full py-2 bg-purple-600 text-white rounded hover:bg-purple-700"
+                        >
+                          Practicar con preguntas libres
+                        </button>
+                      </div>
+                    </>
+                  )}
+                  {estado === 'inicio' && preguntasLibresModo && (
+                    <PreguntasLibres
+                      usuario={{ rut: rut.replace(/\./g, ''), nombre, rol }}
+                      onVolver={() => setPreguntasLibresModo(false)}
                     />
                   )}
                   {estado === 'preguntas' && ensayoActual && (

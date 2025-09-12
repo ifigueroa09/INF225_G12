@@ -1,4 +1,3 @@
-// CrearPregunta.jsx
 import { useState } from 'react';
 
 export default function CrearPregunta({ materiaId, materiaNombre, profeRut, volver }) {
@@ -9,6 +8,7 @@ export default function CrearPregunta({ materiaId, materiaNombre, profeRut, volv
   const [alt4, setAlt4] = useState('');
   const [correcta, setCorrecta] = useState(1);
   const [explicacion, setExplicacion] = useState('');
+  const [esLibre, setEsLibre] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -34,7 +34,8 @@ export default function CrearPregunta({ materiaId, materiaNombre, profeRut, volv
           alt4,
           correcta,
           explicacion,
-          creador_rut: profeRut
+          creador_rut: profeRut,
+          es_libre: esLibre
         })
       });
 
@@ -52,6 +53,7 @@ export default function CrearPregunta({ materiaId, materiaNombre, profeRut, volv
         setAlt4('');
         setExplicacion('');
         setCorrecta(1);
+        setEsLibre(false);
         setSuccess('');
       }, 2000);
     } catch (err) {
@@ -124,6 +126,24 @@ export default function CrearPregunta({ materiaId, materiaNombre, profeRut, volv
             className="w-full p-2 border rounded h-24"
             placeholder="Explicación de la respuesta correcta..."
           />
+        </div>
+
+        <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+          <div className="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              id="esLibre"
+              checked={esLibre}
+              onChange={(e) => setEsLibre(e.target.checked)}
+              className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500"
+            />
+            <label htmlFor="esLibre" className="text-sm font-medium text-gray-700">
+              Marcar como pregunta libre para autoevaluación
+            </label>
+          </div>
+          <p className="text-xs text-gray-600 mt-1 ml-7">
+            Las preguntas libres estarán disponibles para que todos los alumnos practiquen sin restricciones
+          </p>
         </div>
       </div>
 
