@@ -1,4 +1,3 @@
-// server.js corregido y completo
 import express from 'express';
 import cors from 'cors';
 import mysql from 'mysql2';
@@ -8,10 +7,15 @@ app.use(cors());
 app.use(express.json());
 
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '12345',
-  database: 'paes'
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'password',
+  database: process.env.DB_NAME || 'mi_db'
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`API en http://localhost:${PORT}`);
 });
 
 function limpiarRut(rut) {
@@ -24,7 +28,7 @@ function formatearRut(rutLimpio) {
   return `${num}-${dv}`;
 }
 
-/* ---------- Usuarios --------------------------------------- */
+// Usuarios
 app.get('/api/usuarios/:rut', (req, res) => {
   const rut = formatearRut(limpiarRut(req.params.rut));
   conn.query(`SELECT * FROM usuarios WHERE rut = ?`, [rut], (err, results) => {
@@ -63,9 +67,25 @@ app.post('/api/usuarios', (req, res) => {
   );
 });
 
-/* ---------- Banco de preguntas ----------------------------- */
+// Preguntas
 app.get('/api/preguntas', (_, res) => {
   conn.query('SELECT * FROM preguntas ORDER BY creada DESC', (err, results) => {
+    if (err) return res.status(500).send(err.message);
+    res.json(results);
+  });
+});
+
+// Obtener preguntas libres (debe ir antes de /:materiaId)
+app.get('/api/preguntas/libres', (req, res) => {
+  conn.query('SELECT p.*, m.nombre as materia_nombre FROM preguntas p JOIN materias m ON p.materia_id = m.id WHERE p.es_libre = TRUE ORDER BY p.creada DESC', (err, results) => {
+    if (err) return res.status(500).send(err.message);
+    res.json(results);
+  });
+});
+
+// Obtener preguntas libres por materia
+app.get('/api/preguntas/libres/:materiaId', (req, res) => {
+  conn.query('SELECT p.*, m.nombre as materia_nombre FROM preguntas p JOIN materias m ON p.materia_id = m.id WHERE p.es_libre = TRUE AND p.materia_id = ? ORDER BY p.creada DESC', [req.params.materiaId], (err, results) => {
     if (err) return res.status(500).send(err.message);
     res.json(results);
   });
@@ -79,7 +99,7 @@ app.get('/api/preguntas/:materiaId', (req, res) => {
 });
 
 app.post('/api/preguntas', (req, res) => {
-  const { materia_id, texto, alt1, alt2, alt3, alt4, correcta, explicacion, creador_rut } = req.body;
+  const { materia_id, texto, alt1, alt2, alt3, alt4, correcta, explicacion, creador_rut, es_libre } = req.body;
   
   // Validación de campos requeridos
   if (!materia_id || !texto || !alt1 || !alt2 || !alt3 || !alt4 || !correcta || !explicacion || !creador_rut) {
@@ -90,9 +110,9 @@ app.post('/api/preguntas', (req, res) => {
   }
 
   conn.query(
-    `INSERT INTO preguntas (materia_id, texto, alt1, alt2, alt3, alt4, correcta, explicacion, creador_rut)
-     VALUES (?,?,?,?,?,?,?,?,?)`,
-    [materia_id, texto, alt1, alt2, alt3, alt4, correcta, explicacion, creador_rut],
+    `INSERT INTO preguntas (materia_id, texto, alt1, alt2, alt3, alt4, correcta, explicacion, creador_rut, es_libre)
+     VALUES (?,?,?,?,?,?,?,?,?,?)`,
+    [materia_id, texto, alt1, alt2, alt3, alt4, correcta, explicacion, creador_rut, es_libre || false],
     err => {
       if (err) {
         console.error('Error al crear pregunta:', err);
@@ -103,13 +123,23 @@ app.post('/api/preguntas', (req, res) => {
       }
       res.json({
         success: true,
-        message: 'Pregunta agregada correctamente'
+        message: es_libre ? 'Pregunta creada correctamente y marcada como libre para autoevaluación' : 'Pregunta creada correctamente'
       });
     }
   );
 });
 
-/* ---------- Ensayos ---------------------------------------- */
+app.put('/api/preguntas/:id/libre', (req, res) => {
+  const { id } = req.params;
+  const { es_libre } = req.body;
+  
+  conn.query('UPDATE preguntas SET es_libre = ? WHERE id = ?', [es_libre, id], (err) => {
+    if (err) return res.status(500).send(err.message);
+    res.json({ success: true, message: 'Pregunta actualizada correctamente' });
+  });
+});
+
+// Ensayos
 app.get('/api/ensayos', (req, res) => {
   const materia = req.query.materia;
   const sql = materia
@@ -178,7 +208,7 @@ app.post('/api/ensayos', (req, res) => {
   }
 });
 
-/* ---------- Resultados ------------------------------------- */
+// Resultados
 app.post('/api/resultados', (req, res) => {
   const { ensayo_id, usuario_rut, correctas, incorrectas, porcentaje_buenas, porcentaje_malas, respuestas } = req.body;
   

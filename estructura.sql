@@ -35,6 +35,7 @@ CREATE TABLE preguntas (
   correcta TINYINT NOT NULL,
   explicacion TEXT NOT NULL,
   creador_rut VARCHAR(15) NOT NULL,
+  es_libre BOOLEAN DEFAULT FALSE,
   creada TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (materia_id) REFERENCES materias(id),
   FOREIGN KEY (creador_rut) REFERENCES usuarios(rut)

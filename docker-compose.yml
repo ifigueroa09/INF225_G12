@@ -1,0 +1,59 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: paes_db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: paes
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: mi_usuario
+      MYSQL_PASSWORD: mi_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./estructura.sql:/docker-entrypoint-initdb.d/01-estructura.sql
+      - ./datos.sql:/docker-entrypoint-initdb.d/02-datos.sql
+    networks:
+      - paes-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: paes-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      DB_HOST: database
+      DB_USER: mi_usuario
+      DB_PASSWORD: mi_password
+      DB_NAME: paes
+      PORT: 3000
+    depends_on:
+      - database
+    networks:
+      - paes-network
+
+  # Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: paes-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - paes-network
+
+volumes:
+  mysql_data:
+
+networks:
+  paes-network:
+    driver: bridge
