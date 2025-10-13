@@ -74,10 +74,30 @@ docker-compose down
 
 ## Pruebas Unitarias
 
-Este proyecto incluye pruebas unitarias para el endpoint `POST /api/ensayos`.
+Este proyecto incluye pruebas unitarias para 2 endpoints de la API.
 
 ### Documentación
 - [Casos de Prueba](CASOS_DE_PRUEBA.md) - Diseño de casos con clases de equivalencia
+- [Instrucciones de Ejecución](INSTRUCCIONES_EJECUCION.md) - Guía para ejecutar las pruebas
+
+### Ejecución Rápida
+
+```powershell
+pip install -r requirements.txt
+python -m unittest discover -s tests -v
+```
+
+### Casos Implementados
+
+**Endpoint: POST /api/ensayos**
+- ✅ Creación exitosa de ensayo por profesor
+- ✅ Rechazo de usuario no autorizado (alumno)
+
+**Endpoint: POST /api/resultados**
+- ✅ Envío exitoso de resultados por alumno
+- ✅ Rechazo de datos faltantes/null
+
+**Total:** 4 casos de prueba en 2 endpoints
 
 ### Ejecución Rápida
 
