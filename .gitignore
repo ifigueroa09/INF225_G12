@@ -241,3 +241,5 @@ public/uploads/
 
 # PM2 process files
 .pm2/
+
+__pycache__/

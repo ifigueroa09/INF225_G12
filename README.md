@@ -69,3 +69,23 @@ docker-compose down
 - Ensayos PAES completos
 - **Preguntas libres para autoevaluación**
 - Resultados automáticos y retroalimentación
+
+---
+
+## Pruebas Unitarias
+
+Este proyecto incluye pruebas unitarias para el endpoint `POST /api/ensayos`.
+
+### Documentación
+- [Casos de Prueba](CASOS_DE_PRUEBA.md) - Diseño de casos con clases de equivalencia
+
+### Ejecución Rápida
+
+```powershell
+pip install -r requirements.txt
+python -m unittest discover -s tests -v
+```
+
+### Casos Implementados
+- ✅ Creación exitosa de ensayo por profesor
+- ✅ Rechazo de creación por usuario no autorizado (alumno)
