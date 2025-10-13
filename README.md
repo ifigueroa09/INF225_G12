@@ -98,6 +98,8 @@ python -m unittest discover -s tests -v
 - ✅ Rechazo de datos faltantes/null
 
 **Total:** 4 casos de prueba en 2 endpoints
+<img width="1131" height="271" alt="image" src="https://github.com/user-attachments/assets/efae0620-0e86-425a-88a0-994d71e2b5e8" />
+
 
 ### Ejecución Rápida
 
