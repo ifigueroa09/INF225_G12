@@ -72,42 +72,8 @@ docker-compose down
 
 ---
 
-## Pruebas Unitarias
-
-Este proyecto incluye pruebas unitarias para 2 endpoints de la API.
-
-### Documentación
-- [Casos de Prueba](CASOS_DE_PRUEBA.md) - Diseño de casos con clases de equivalencia
-- [Instrucciones de Ejecución](INSTRUCCIONES_EJECUCION.md) - Guía para ejecutar las pruebas
-
-### Ejecución Rápida
-
-```powershell
-pip install -r requirements.txt
-python -m unittest discover -s tests -v
-```
-
-### Casos Implementados
-
-**Endpoint: POST /api/ensayos**
-- ✅ Creación exitosa de ensayo por profesor
-- ✅ Rechazo de usuario no autorizado (alumno)
-
-**Endpoint: POST /api/resultados**
-- ✅ Envío exitoso de resultados por alumno
-- ✅ Rechazo de datos faltantes/null
-
-**Total:** 4 casos de prueba en 2 endpoints
-<img width="1131" height="271" alt="image" src="https://github.com/user-attachments/assets/efae0620-0e86-425a-88a0-994d71e2b5e8" />
+## Documentación completa
+Toda la documentación adicional (HU, pruebas, tablas de Input/Output/Contexto, resultados y videos) está en la **Wiki**:
+👉 https://github.com/ifigueroa09/INF225_G12/wiki
 
 
-### Ejecución Rápida
-
-```powershell
-pip install -r requirements.txt
-python -m unittest discover -s tests -v
-```
-
-### Casos Implementados
-- ✅ Creación exitosa de ensayo por profesor
-- ✅ Rechazo de creación por usuario no autorizado (alumno)
