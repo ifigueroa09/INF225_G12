@@ -73,7 +73,6 @@ docker-compose down
 ---
 
 ## Documentación completa
-Toda la documentación adicional (HU, pruebas, tablas de Input/Output/Contexto, resultados y videos) está en la **Wiki**:
-👉 https://github.com/ifigueroa09/INF225_G12/wiki
+Toda la documentación adicional (HU, pruebas, tablas de Input/Output/Contexto, resultados y videos) está en la **Wiki**: https://github.com/ifigueroa09/INF225_G12/wiki
 
 
