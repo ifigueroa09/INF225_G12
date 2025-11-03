@@ -1,4 +1,17 @@
-# Casos de Prueba - Endpoint POST /api/ensayos
+# Casos de Prueba - Sistema de Ensayos PAES
+
+## Información General
+
+Este documento describe los casos de prueba diseñados para validar los endpoints críticos del sistema de ensayos PAES. Se aplican técnicas de diseño de pruebas basadas en clases de equivalencia y valores frontera.
+
+## Índice
+1. Casos de Prueba - POST /api/ensayos
+2. Casos de Prueba - POST /api/resultados
+3. Resumen de Cobertura
+
+---
+
+# 1. ENDPOINT POST /api/ensayos
 
 ## Análisis del Endpoint
 
@@ -107,7 +120,7 @@ Este caso prueba una **clase de equivalencia inválida** (usuario sin permisos).
 
 ---
 
-# Casos de Prueba - Endpoint POST /api/resultados
+# 2. ENDPOINT POST /api/resultados
 
 ## Análisis del Endpoint
 
@@ -209,6 +222,13 @@ Este caso prueba una **clase de equivalencia inválida** (datos faltantes). Var�
 ---
 
 ## Resumen de Cobertura - Ambos Endpoints
+
+
+---
+
+# 3. RESUMEN DE COBERTURA
+
+## Cobertura por Endpoint
 
 | Endpoint | Caso | Clase de Equivalencia | Valor Frontera | Aspecto Funcional |
 |----------|------|-----------------------|----------------|-------------------|

@@ -1,20 +1,94 @@
-# Instrucciones de Ejecución - Pruebas Unitarias
+# Instrucciones de Ejecución
 
-## Requisitos
+## Contenido
+1. Ejecución del Sistema Completo
+2. Ejecución de Pruebas Unitarias
+3. Solución de Problemas Comunes
+
+---
+
+## 1. Ejecución del Sistema Completo
+
+### Requisitos Previos
+- Docker Desktop instalado y ejecutándose
+- Puertos 80, 3000 y 3306 disponibles
+- Git (para clonar el repositorio)
+
+### Pasos para Ejecutar
+
+#### Windows (PowerShell):
+```powershell
+# Clonar el repositorio
+git clone https://github.com/ifigueroa09/INF225_G12.git
+cd INF225_G12
+
+# Iniciar todos los servicios
+docker-compose up -d
+
+# Verificar estado de contenedores
+docker-compose ps
+
+
+
+#### Linux/Mac:
+```bash
+# Clonar el repositorio
+git clone https://github.com/ifigueroa09/INF225_G12.git
+cd INF225_G12
+
+# Iniciar todos los servicios
+docker-compose up -d
+
+# Verificar estado de contenedores
+docker-compose ps
+
+
+```
+
+### Acceso al Sistema
+
+Una vez iniciado, el sistema está disponible en:
+- Frontend (interfaz web): http://localhost
+- Backend API: http://localhost:3000
+- Base de datos MySQL: localhost:3306
+
+### Detener el Sistema
+
+```bash
+# Detener servicios
+docker-compose down
+
+# Detener y eliminar datos
+docker-compose down -v
+```
+
+---
+
+## 2. Ejecución de Pruebas Unitarias
+
+### Requisitos
 
 - Python 3.8 o superior
-- pip (gestor de paquetes)
-- Backend corriendo en `http://localhost:3000`
-- Base de datos MySQL activa
+- pip (gestor de paquetes de Python)
+- Sistema completo ejecutándose (ver sección 1)
 
-## Instalación
+### Instalación de Dependencias
 
-1. Instalar dependencias:
+#### Windows (PowerShell):
 ```powershell
 pip install -r requirements.txt
 ```
 
-2. Verificar que el backend está corriendo:
+#### Linux/Mac:
+```bash
+pip3 install -r requirements.txt
+```
+
+### Verificar Backend Activo
+
+Antes de ejecutar las pruebas, verificar que el backend responde:
+
+#### Windows (PowerShell):
 ```powershell
 curl http://localhost:3000/api/preguntas
 ```
@@ -42,17 +116,17 @@ python -m unittest tests.test_crear_ensayo.TestCrearEnsayo.test_crear_ensayo_exi
 
 ## Casos de Prueba Implementados
 
-### Endpoint: POST /api/ensayos
-1. ✅ Creación exitosa de ensayo por profesor
-2. ❌ Rechazo de usuario no autorizado (alumno)
+#### Endpoint: POST /api/ensayos
+- test_crear_ensayo_exitoso: Profesor autorizado crea ensayo exitosamente
+- test_crear_ensayo_usuario_no_profesor: Alumno no puede crear ensayo (403)
 
-### Endpoint: POST /api/resultados
-3. ✅ Envío exitoso de resultados por alumno
-4. ❌ Rechazo de datos faltantes/null
+#### Endpoint: POST /api/resultados
+- test_enviar_resultados_exitoso: Alumno envía resultados válidos
+- test_enviar_resultados_datos_faltantes: Rechazo de datos null/incompletos (500)
 
-**Total: 4 casos de prueba en 2 endpoints**
+Total: 4 casos de prueba en 2 endpoints críticos
 
-## Interpretación de Resultados
+### Interpretación de Resultados
 
 ### Exitoso
 ```
